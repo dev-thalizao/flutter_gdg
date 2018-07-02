@@ -1,6 +1,6 @@
 # gdg_prod
 
-Project for presentation in GDG (Prod)
+Project for presentation in GDG São Carlos.
 
 ## Getting Started
 
