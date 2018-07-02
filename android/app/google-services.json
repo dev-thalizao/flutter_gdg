@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "698770768345",
+    "firebase_url": "https://gdg-prod.firebaseio.com",
+    "project_id": "gdg-prod",
+    "storage_bucket": "gdg-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698770768345:android:d5b7571ed81e583b",
+        "android_client_info": {
+          "package_name": "br.thalesfrigo.gdgprod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698770768345-9vvro3q4t2109i1rqcipdvcovos13ka6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaFR29phyZYdw37PcFdRgEEeswoIv0-Wo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
