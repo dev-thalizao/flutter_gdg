@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'team_card.dart';
 import 'package:gdg_prod/model/team.dart';
+import 'package:gdg_prod/add_team_page.dart';
 
 class TeamsPage extends StatefulWidget {
   @override
@@ -33,6 +34,12 @@ class TeamsPageState extends State<TeamsPage> {
               return _buildListItem(context, snapshot.data.documents[index]);
             },
           );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddTeamPage()));
         },
       ),
     );

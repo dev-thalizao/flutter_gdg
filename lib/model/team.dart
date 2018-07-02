@@ -5,7 +5,7 @@ class Team {
   final String name, description, imageUrl;
   final int numberOfTitles;
 
-  Team(this.reference, this.name, this.description, this.imageUrl, this.numberOfTitles);
+  Team(this.name, this.description, this.imageUrl, this.numberOfTitles, {this.reference});
 
   Team.fromDocumentSnapshot(DocumentSnapshot document) :
       reference = document.reference,
@@ -13,4 +13,13 @@ class Team {
       description = document["description"],
       imageUrl = document["imageUrl"],
       numberOfTitles = document["numberOfTitles"];
+
+  Map<String, dynamic> toMap(){
+    return {
+      "name": name,
+      "description": description,
+      "numberOfTitles": numberOfTitles,
+      "imageUrl": imageUrl
+    };
+  }
 }
