@@ -1,4 +1,4 @@
-# gdg_prod
+# Flutter GDG
 
 Project for presentation in GDG São Carlos.
 
