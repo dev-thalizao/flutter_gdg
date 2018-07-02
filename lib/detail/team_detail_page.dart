@@ -1,17 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gdg_prod/model/team.dart';
 
 class TeamDetailPage extends StatelessWidget {
 
-  final DocumentSnapshot document;
+  final Team team;
 
-  TeamDetailPage(this.document);
+  TeamDetailPage(this.team);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(document["name"]),
+        title: Text(team.name),
       ),
       body: Container(
         child: Center(
@@ -21,16 +22,16 @@ class TeamDetailPage extends StatelessWidget {
               children: <Widget>[
                 teamImage,
                 Padding(padding: const EdgeInsets.symmetric(vertical: 8.0),),
-                Text(document["name"]),
+                Text(team.name),
                 Padding(padding: const EdgeInsets.symmetric(vertical: 8.0),),
                 Row(
                   children: <Widget>[
                     Icon(Icons.star),
-                    Text("Número de títulos: ${document["numberOfTitles"].toString()}")
+                    Text("Número de títulos: ${team.numberOfTitles.toString()}")
                   ],
                 ),
                 Padding(padding: const EdgeInsets.symmetric(vertical: 8.0),),
-                Text(document["description"]),
+                Text(team.description),
               ],
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -44,14 +45,14 @@ class TeamDetailPage extends StatelessWidget {
 
   Widget get teamImage {
     return Hero(
-      tag: document.reference,
+      tag: team.reference,
       child: Container(
         height: 120.0,
         width: 120.0,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
-            image: NetworkImage(document["imageUrl"]),
+            image: NetworkImage(team.imageUrl),
             fit: BoxFit.scaleDown
           )
         ),

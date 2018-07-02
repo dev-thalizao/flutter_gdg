@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gdg_prod/detail/team_detail_page.dart';
+import 'package:gdg_prod/model/team.dart';
 
 class TeamCard extends StatefulWidget {
 
-  final DocumentSnapshot document;
+  final Team team;
 
-  TeamCard(this.document);
+  TeamCard(this.team);
 
   @override
   State createState() => TeamCardState();
@@ -17,7 +18,7 @@ class TeamCardState extends State<TeamCard> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      key: ValueKey(widget.document.reference),
+      key: ValueKey(widget.team.reference),
       title: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
         child: Container(
@@ -42,8 +43,8 @@ class TeamCardState extends State<TeamCard> {
         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 64.0),
         child: Column(
           children: <Widget>[
-            Text(widget.document["name"], style: Theme.of(context).textTheme.headline),
-            Text("Número de títulos: ${widget.document["numberOfTitles"].toString()}", style: Theme.of(context).textTheme.subhead),
+            Text(widget.team.name, style: Theme.of(context).textTheme.headline),
+            Text("Número de títulos: ${widget.team.numberOfTitles.toString()}", style: Theme.of(context).textTheme.subhead),
           ],
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -76,18 +77,18 @@ class TeamCardState extends State<TeamCard> {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(
-          image: NetworkImage(widget.document["imageUrl"]),
+          image: NetworkImage(widget.team.imageUrl),
           fit: BoxFit.scaleDown
         )
       ),
     );
 
     return Hero(
-      tag: widget.document.reference,
+      tag: widget.team.reference,
       child: AnimatedCrossFade(
         firstChild: placeholder,
         secondChild: image,
-        crossFadeState: widget.document["imageUrl"] == null ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+        crossFadeState: widget.team.imageUrl == null ? CrossFadeState.showFirst : CrossFadeState.showSecond,
         duration: Duration(milliseconds: 1000),
       )
     );
@@ -95,7 +96,7 @@ class TeamCardState extends State<TeamCard> {
 
   void navigateToDetail(){
     Navigator.of(context).push(MaterialPageRoute(builder: (context){
-      return TeamDetailPage(widget.document);
+      return TeamDetailPage(widget.team);
     }));
   }
 }

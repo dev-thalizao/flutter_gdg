@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'team_card.dart';
+import 'package:gdg_prod/model/team.dart';
 
 class TeamsPage extends StatefulWidget {
   @override
@@ -38,6 +39,6 @@ class TeamsPageState extends State<TeamsPage> {
   }
 
   Widget _buildListItem(BuildContext context, DocumentSnapshot document) {
-    return TeamCard(document);
+    return TeamCard(Team.fromDocumentSnapshot(document));
   }
 }
